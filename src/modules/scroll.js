@@ -2,12 +2,31 @@
 
 const smoothScroll = () => {
   const links = document.querySelectorAll(".top-menu a");
-  console.log(links);
+  const buttonUp = document.querySelector(".up");
+
+  const section = document.getElementById("services");
+  console.log(section);
+
+  window.onscroll = function () {
+    if (window.pageYOffset > 580) {
+      buttonUp.style.display = "block";
+    } else {
+      buttonUp.style.display = "none";
+    }
+  };
+
+  buttonUp.addEventListener("click", () => {
+    window.scrollBy({
+      top: -document.documentElement.scrollHeight,
+      behavior: "smooth",
+    });
+  });
+
+  /////////////////////////
 
   links.forEach((link) => {
     link.addEventListener("click", (event) => {
       event.preventDefault();
-      console.log("click");
 
       const id = link.getAttribute("href").substring(1);
       const section = document.getElementById(id);
