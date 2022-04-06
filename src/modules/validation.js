@@ -4,8 +4,6 @@ const validation = () => {
   const inputName = document.querySelectorAll("input[name=fio]");
   const inputTel = document.querySelectorAll("input[name=tel]");
 
-  console.log(inputTel);
-
   inputName.forEach((item) => {
     item.addEventListener("input", (e) => {
       e.target.value = e.target.value.replace(/[^а-яА-ЯёЁ\s]+/i, "");

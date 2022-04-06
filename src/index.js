@@ -6,4 +6,4 @@ import sendForm from "./modules/sendForm";
 
 modal();
 validation();
-sendForm({ formId: ["form-callback"] });
+sendForm({ formId: "form1" });
