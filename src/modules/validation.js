@@ -19,7 +19,7 @@ const validation = () => {
 
   inputTel.forEach((item) => {
     item.addEventListener("input", (e) => {
-      e.target.value = e.target.value.replace(/[^\d+()-]+/gi, "");
+      e.target.value = e.target.value.replace(/[^\d+()]+/gi, "");
       e.target.style.border = null;
     });
     item.addEventListener("invalid", (e) => {
