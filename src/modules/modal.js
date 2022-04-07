@@ -3,14 +3,18 @@
 import { animate } from "./helpers";
 
 const modal = () => {
-  const callbackBtn = document.querySelectorAll(".callback-btn");
+  // const callbackBtn = document.querySelectorAll(".callback-btn");
   const modalCallback = document.querySelector(".modal-callback");
   const modalOverlay = document.querySelector(".modal-overlay");
   const modalClose = document.querySelector(".modal-close");
+  // const buttonServices = document.querySelector(".button-services");
+  const btnModal = document.querySelectorAll(".fancyboxModal");
+
+  // console.log(btnModal);
 
   const screen = window.screen.width;
 
-  callbackBtn.forEach((btn) => {
+  btnModal.forEach((btn) => {
     btn.addEventListener("click", () => {
       modalOverlay.style.display = "block";
       modalCallback.style.display = "block";
