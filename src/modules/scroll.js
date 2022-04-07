@@ -4,8 +4,7 @@ const smoothScroll = () => {
   const links = document.querySelectorAll(".top-menu a");
   const buttonUp = document.querySelector(".up");
 
-  const section = document.getElementById("services");
-  console.log(section);
+  // const section = document.getElementById("services");
 
   window.onscroll = function () {
     if (window.pageYOffset > 580) {
