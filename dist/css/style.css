@@ -11,6 +11,10 @@ body {
 	overflow-x: hidden;
 	font-family: "Open Sans", sans-serif;
 }
+.lock {
+	overflow: hidden;
+	margin-right: 10px;
+}
 .main-wrapper {
 	min-height: 100%;
 	height: auto !important;
@@ -726,6 +730,9 @@ hr.white {
 	.slick-dots {
 		padding-top: 30px;
 	}
+	.lock {
+		margin-right: 0;
+	}
 }
 @media only screen and (max-width: 767px) {
 }
@@ -803,6 +810,7 @@ hr.white {
 	.overlay {
 		display: none;
 	}
+	
 	.logo {
 		margin-left: 0;
 	}

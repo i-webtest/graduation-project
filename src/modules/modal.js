@@ -9,16 +9,22 @@ const modal = () => {
   const modalClose = document.querySelector(".modal-close");
   // const buttonServices = document.querySelector(".button-services");
   const btnModal = document.querySelectorAll(".fancyboxModal");
+  const body = document.querySelector("body");
+  // const headerWrapper = document.querySelector(".header-wrapper");
 
-  // console.log(btnModal);
-
+  // console.log(headerWrapper);
   const screen = window.screen.width;
+
+  const handleModal = () => {
+    body.classList.toggle("lock");
+  };
 
   btnModal.forEach((btn) => {
     btn.addEventListener("click", () => {
       modalOverlay.style.display = "block";
       modalCallback.style.display = "block";
       modalCallback.style.top = -50 + "%";
+      handleModal();
 
       if (screen > 768) {
         animate({
@@ -40,11 +46,13 @@ const modal = () => {
   modalOverlay.addEventListener("click", () => {
     modalOverlay.style.display = "none";
     modalCallback.style.display = "none";
+    handleModal();
   });
 
   modalClose.addEventListener("click", () => {
     modalOverlay.style.display = "none";
     modalCallback.style.display = "none";
+    handleModal();
   });
 
   document.addEventListener("keydown", (event) => {
@@ -53,6 +61,7 @@ const modal = () => {
       modalOverlay.style.display = "none";
       modalCallback.style.display = "none";
     }
+    handleModal();
   });
 };
 

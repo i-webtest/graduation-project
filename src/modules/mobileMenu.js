@@ -1,103 +1,42 @@
 "use strict";
 
 const mobileMenu = () => {
-  // const menu = document.querySelector(".mobile-menu");
-
-  // const handleMenu = () => {
-  //   menu.classList.toggle("active-menu");
-  // };
-
-  // const toggleMenu = (e) => {
-  //   if (menu.classList.contains("active-menu")) {
-  //     if (!e.target.closest("menu")) {
-  //       handleMenu();
-  //     } else if (e.target.closest("menu") && e.target.closest("ul>li>a")) {
-  //       handleMenu();
-  //     } else if (e.target.classList.contains("close-btn")) {
-  //       e.preventDefault();
-  //       handleMenu();
-  //     }
-  //   } else if (e.target.closest(".menu")) {
-  //     handleMenu();
-  //   }
-  // };
-
-  // document.body.addEventListener("click", toggleMenu);
-
-  // const topMenu = document.querySelector(".top-menu");
-  const mobileMenuButtons = document.querySelector(".mob-menu-btn");
+  const mobileMenuBtn = document.querySelector(".mob-menu-btn");
+  const menuCloseBtn = document.querySelector(".mobile-menu-close");
   const mobileMenu = document.querySelector(".mobile-menu");
+  const menuLinks = mobileMenu.querySelectorAll("ul>li>a");
   const overlay = document.querySelector(".overlay");
-  console.log(overlay);
+  const body = document.querySelector("body");
+  // console.log(body);
 
-  // const toggleMenu = (event) => {
-  //   const id = event.target.getAttribute("href");
+  const handleMenu = () => {
+    mobileMenu.classList.toggle("open");
+    body.classList.toggle("lock");
+  };
 
-  //   if (event.target.closest(".mob-menu-btn")) {
-  //     event.preventDefault();
-  //     overlay.style.cssText = "opacity: 1; z-index: 1;";
-  //     mobileMenu.style.right = -10 + "px";
-  //   }
+  mobileMenuBtn.addEventListener("click", handleMenu);
+  overlay.addEventListener("click", handleMenu);
+  menuCloseBtn.addEventListener("click", handleMenu);
 
-  //   if (event.target.closest(".mobile-menu-close")) {
-  //     event.preventDefault();
-  //     overlay.style.cssText = null;
-  //     mobileMenu.style.right = -500 + "px";
-  //   }
+  menuLinks.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      e.preventDefault();
+      handleMenu();
 
-  //   if (event.target.closest("ul>li>a")) {
-  //     event.preventDefault();
-  //     document.querySelector(id).scrollIntoView({
-  //       behavior: "smooth",
-  //       block: "start",
-  //     });
-  //   }
-  // };
+      let href = e.target.getAttribute("href").substring(1);
 
-  mobileMenuButtons.addEventListener("click", (event) => {
-    const toggleMenu = (event) => {
-      const id = event.target.getAttribute("href");
+      const scrollTarget = document.getElementById(href);
 
-      if (event.target.closest(".mob-menu-btn")) {
-        event.preventDefault();
-        overlay.style.cssText = "opacity: 1; z-index: 100;";
-        mobileMenu.style.right = -10 + "px";
-      }
+      const topOffset = 50;
+      const elementPosition = scrollTarget.getBoundingClientRect().top;
+      const offsetPosition = elementPosition - topOffset;
 
-      if (event.target.closest(".mobile-menu-close")) {
-        event.preventDefault();
-        overlay.style.cssText = null;
-        mobileMenu.style.right = -500 + "px";
-      }
-
-      if (event.target.closest("ul>li>a")) {
-        event.preventDefault();
-        document.querySelector(id).scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
-    };
-
-    toggleMenu(event);
+      window.scrollBy({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    });
   });
-
-  overlay.addEventListener("click", (e) => {
-    if (!e.target.closest(".mobile-menu") || e.target.classList.contains("mobile-menu-close")) {
-      overlay.style.display = "none";
-      mobileMenu.style.display = "none";
-    }
-  });
-
-  // overlay.addEventListener("click", (e) => {
-  //   if (!e.target.closest(".mobile-menu") || e.target.classList.contains("mobile-menu-close")) {
-  //     overlay.style.display = "none";
-  //   }
-  // });
-
-  // document.addEventListener("click", (event) => {
-  //   toggleMenu(event);
-  // });
 };
 
 export default mobileMenu;
