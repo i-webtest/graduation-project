@@ -7,6 +7,7 @@ import smoothScroll from "./modules/scroll";
 import topSlider from "./modules/topSlider";
 import accordeon from "./modules/accordeon";
 import slider from "./modules/slider";
+import mobileMenu from "./modules/mobileMenu";
 
 modal();
 validation();
@@ -15,3 +16,4 @@ smoothScroll();
 topSlider();
 accordeon();
 slider();
+mobileMenu();
