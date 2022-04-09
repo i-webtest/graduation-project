@@ -5,8 +5,6 @@ const slider = () => {
   const buttonPrev = document.querySelector(".arrow-left");
   const buttonNext = document.querySelector(".arrow-right");
 
-  console.log(buttonPrev);
-  console.log(buttonNext);
   let viewCard;
 
   if (window.outerWidth < 570) {
@@ -27,7 +25,7 @@ const slider = () => {
     }
   });
 
-  start = 0; // обнуляем
+  start = 0;
   if (start === 0) {
     buttonPrev.style.opacity = 0.2;
   }
