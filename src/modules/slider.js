@@ -1,6 +1,9 @@
 "use strict";
 
+import Swiper, { Navigation } from "swiper";
+
 const slider = () => {
+  /*
   const cards = document.querySelectorAll(".col-sm-6");
   const buttonPrev = document.querySelector(".arrow-left");
   const buttonNext = document.querySelector(".arrow-right");
@@ -50,6 +53,29 @@ const slider = () => {
       }
       buttonPrev.style.opacity = 1;
     }
+  });
+  */
+
+  const swiper = new Swiper(".swiper", {
+    spaceBetween: 20,
+    slidesPerView: 1,
+    loop: false,
+    modules: [Navigation],
+    navigation: {
+      nextEl: ".arrow-right",
+      prevEl: ".arrow-left",
+    },
+    breakpoints: {
+      576: {
+        slidesPerView: 2,
+      },
+      768: {
+        slidesPerView: 3,
+      },
+      1024: {
+        slidesPerView: 3,
+      },
+    },
   });
 };
 
