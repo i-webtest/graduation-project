@@ -4,6 +4,7 @@ const sendForm = ({ formId }) => {
   const form = document.getElementById(formId);
   const modal = document.querySelector(".modal-callback");
   const modalOverlay = document.querySelector(".modal-overlay");
+  const body = document.querySelector("body");
   const statusBlock = document.createElement("div");
 
   const loadText = "Загрузка...";
@@ -70,6 +71,8 @@ const sendForm = ({ formId }) => {
           setTimeout(() => {
             modal.style.display = "none";
             modalOverlay.style.display = "none";
+            body.classList.remove("lock");
+            document.body.style.overflow = "";
           }, 3000);
         });
     } else {
