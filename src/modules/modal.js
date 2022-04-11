@@ -20,7 +20,9 @@ const modal = () => {
   // };
 
   btnModal.forEach((btn) => {
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", (event) => {
+      event.preventDefault();
+
       modalOverlay.style.display = "block";
       modalCallback.style.display = "block";
       modalCallback.style.top = -50 + "%";
