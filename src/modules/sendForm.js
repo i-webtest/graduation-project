@@ -2,67 +2,35 @@
 
 const sendForm = ({ formId }) => {
   const form = document.getElementById(formId);
+  const modal = document.querySelector(".modal-callback");
+  const modalOverlay = document.querySelector(".modal-overlay");
   const statusBlock = document.createElement("div");
+
   const loadText = "Загрузка...";
   const errorText = "Ошибка...";
+  const textError = "Данные некорректны! Попробуйте ещё раз...";
   const successText = "Спасибо! Наш менеджер с вами свяжется!";
-  const textError = "Попробуйте ещё раз...";
-  // const name = document.querySelectorAll(".form-control")[0];
-  // const phone = document.querySelectorAll(".form-control")[1];
-  // console.log(name);
-  // console.log(form);
-
-  statusBlock.style.color = "#000";
 
   const validate = (list) => {
     let success = true;
 
     list.forEach((item) => {
-      item.style.border = null;
-      if (item.name === "fio") {
-        if (item.value.length < 2) {
-          item.style.border = "1px solid red";
-          success = false;
-        }
-      } else if (item.name === "tel") {
-        item.require = true;
-        if (item.value.length < 6 || item.value.length > 16) {
-          success = false;
-          item.style.border = "1px solid red";
-        }
-      } else {
-        success = true;
+      if (item.name === "fio" && item.value.length < 2) {
+        item.style.border = "3px solid red";
+
+        success = false;
+      }
+      if ((item.name === "tel" && item.value.length < 6) || item.value.length > 16) {
+        item.style.border = "3px solid red";
+
+        success = false;
       }
     });
-
     return success;
   };
 
-  // const validate = (list) => {
-  //   let success = true;
-
-  //   list.forEach((item) => {
-  //     item.style.border = null;
-  //     if (item.name === "fio") {
-  //       if (item.value.length < 2) {
-  //         item.style.border = "1px solid red";
-  //         success = false;
-  //       }
-  //     } else if (item.name === "tel") {
-  //       if (item.value.length < 6 || item.value.length > 16) {
-  //         success = false;
-  //         item.style.border = "1px solid red";
-  //       }
-  //     } else {
-  //       success = true;
-  //     }
-  //   });
-
-  //   return success;
-  // };
-
-  const sendData = (data) => {
-    return fetch("https://jsonplaceholder.typicode.com/posts", {
+  const sendData = async (data) => {
+    const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -79,19 +47,7 @@ const sendForm = ({ formId }) => {
     statusBlock.textContent = loadText;
     form.append(statusBlock);
 
-    formData.forEach((val, key) => {
-      formBody[key] = val;
-    });
-
-    // someElem.forEach((elem) => {
-    //   const element = document.getElementById(elem.id);
-
-    //   if (elem.type === "block" && +element.textContent) {
-    //     formBody[elem.id] = element.textContent;
-    //   } else if (elem.type === "input" && element.value) {
-    //     formBody[elem.id] = element.value;
-    //   }
-    // });
+    formData.forEach((val, key) => [(formBody[key] = val)]);
 
     if (validate(formElements)) {
       sendData(formBody)
@@ -99,27 +55,25 @@ const sendForm = ({ formId }) => {
           statusBlock.textContent = successText;
 
           formElements.forEach((input) => {
-            input.value = "";
+            if (input.closest(".feedback")) {
+              input.style.border = null;
+            } else {
+              input.value = "";
+            }
           });
-          setInterval(() => {
-            statusBlock.textContent = "";
-          }, 3000);
         })
         .catch((error) => {
           statusBlock.textContent = errorText;
+        })
+        .finally(() => {
+          setTimeout(() => (statusBlock.textContent = ""), 2000);
+          setTimeout(() => {
+            modal.style.display = "none";
+            modalOverlay.style.display = "none";
+          }, 3000);
         });
     } else {
-      // alert("Данные не валидны!");
-
-      form.append(statusBlock);
       statusBlock.textContent = textError;
-
-      // formElements.forEach((input) => {
-      //   input.value = "";
-      // });
-      setTimeout(() => {
-        statusBlock.textContent = "";
-      }, 2000);
     }
   };
 
@@ -127,7 +81,6 @@ const sendForm = ({ formId }) => {
     if (!form) {
       throw new Error("Верните форму на место!");
     }
-
     form.addEventListener("submit", (event) => {
       event.preventDefault();
 

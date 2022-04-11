@@ -15,16 +15,16 @@ const modal = () => {
   // console.log(headerWrapper);
   const screen = window.screen.width;
 
-  const handleModal = () => {
-    body.classList.toggle("lock");
-  };
+  // const handleModal = () => {
+  //   body.classList.add("lock");
+  // };
 
   btnModal.forEach((btn) => {
     btn.addEventListener("click", () => {
       modalOverlay.style.display = "block";
       modalCallback.style.display = "block";
       modalCallback.style.top = -50 + "%";
-      handleModal();
+      body.classList.add("lock");
 
       if (screen > 768) {
         animate({
@@ -46,13 +46,13 @@ const modal = () => {
   modalOverlay.addEventListener("click", () => {
     modalOverlay.style.display = "none";
     modalCallback.style.display = "none";
-    handleModal();
+    body.classList.remove("lock");
   });
 
   modalClose.addEventListener("click", () => {
     modalOverlay.style.display = "none";
     modalCallback.style.display = "none";
-    handleModal();
+    body.classList.remove("lock");
   });
 
   document.addEventListener("keydown", (event) => {
@@ -60,8 +60,8 @@ const modal = () => {
     if (key === "Escape") {
       modalOverlay.style.display = "none";
       modalCallback.style.display = "none";
+      body.classList.remove("lock");
     }
-    handleModal();
   });
 };
 
