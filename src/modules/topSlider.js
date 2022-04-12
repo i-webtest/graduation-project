@@ -9,26 +9,6 @@ const topSlider = () => {
 
   let currentSlide = 0;
 
-  /////////////////////////
-  // const createDots = () => {
-  //   sliderDots.innerHTML = "";
-
-  //   slides.forEach((item, index) => {
-  //     const dot = document.createElement("li");
-  //     dot.classList.add("dot");
-
-  //     if (item.classList.contains("item-active")) {
-  //       dot.classList.add("slick-active");
-  //       currentSlide = index;
-  //     }
-
-  //     sliderDots.append(dot);
-  //   });
-  //   dots = document.querySelectorAll(".dot");
-  // };
-  // createDots();
-
-  ////////////////////////
   for (let i = 1; i < slides.length; i++) {
     slides[i].hidden = true;
   }
@@ -39,7 +19,6 @@ const topSlider = () => {
     slides[i].hidden = true;
     i = (i + 1) % slides.length;
     slides[i].hidden = false;
-    ///////////////////
   }, 3000);
 };
 

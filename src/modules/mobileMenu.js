@@ -7,7 +7,6 @@ const mobileMenu = () => {
   const menuLinks = mobileMenu.querySelectorAll("ul>li>a");
   const overlay = document.querySelector(".overlay");
   const body = document.querySelector("body");
-  // console.log(body);
 
   const handleMenu = () => {
     mobileMenu.classList.toggle("open");

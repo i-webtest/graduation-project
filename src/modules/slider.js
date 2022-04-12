@@ -53,28 +53,6 @@ const slider = () => {
       buttonPrev.style.opacity = 1;
     }
   });
-
-  // const swiper = new Swiper(".swiper", {
-  //   spaceBetween: 20,
-  //   slidesPerView: 1,
-  //   loop: false,
-  //   modules: [Navigation],
-  //   navigation: {
-  //     nextEl: ".arrow-right",
-  //     prevEl: ".arrow-left",
-  //   },
-  //   breakpoints: {
-  //     576: {
-  //       slidesPerView: 2,
-  //     },
-  //     768: {
-  //       slidesPerView: 3,
-  //     },
-  //     1024: {
-  //       slidesPerView: 3,
-  //     },
-  //   },
-  // });
 };
 
 export default slider;

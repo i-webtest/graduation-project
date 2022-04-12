@@ -21,11 +21,6 @@ const sendForm = ({ formId }) => {
 
         success = false;
       }
-      // if ((item.name === "tel" && item.value.length < 6) || item.value.length > 16) {
-      //   item.style.border = "3px solid red";
-
-      //   success = false;
-      // }
 
       if (item.name === "tel") {
         if (item.value.length < 6 || item.value.length > 16) {

@@ -3,8 +3,6 @@
 const accordeon = () => {
   const accordeonButtons = document.querySelectorAll(".accordeon .element");
   const accordeonContent = document.querySelectorAll(".accordeon .element-content");
-  // console.log(accordeonButtons);
-  // console.log(accordeonContent);
 
   accordeonButtons.forEach((item, index) => {
     const title = item.querySelector(".title");

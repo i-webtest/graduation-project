@@ -3,21 +3,13 @@
 import { animate } from "./helpers";
 
 const modal = () => {
-  // const callbackBtn = document.querySelectorAll(".callback-btn");
   const modalCallback = document.querySelector(".modal-callback");
   const modalOverlay = document.querySelector(".modal-overlay");
   const modalClose = document.querySelector(".modal-close");
-  // const buttonServices = document.querySelector(".button-services");
   const btnModal = document.querySelectorAll(".fancyboxModal");
   const body = document.querySelector("body");
-  // const headerWrapper = document.querySelector(".header-wrapper");
 
-  // console.log(headerWrapper);
   const screen = window.screen.width;
-
-  // const handleModal = () => {
-  //   body.classList.add("lock");
-  // };
 
   btnModal.forEach((btn) => {
     btn.addEventListener("click", (event) => {
